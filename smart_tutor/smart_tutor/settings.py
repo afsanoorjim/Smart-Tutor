@@ -25,7 +25,20 @@ SECRET_KEY = "django-insecure-tvdmrg0-^t0bgswd6nwz^c!4(y-0*@^b)xzk8dw0dzakv%hz=f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.github.dev', 'localhost', '127.0.0.1']
+
+# CSRF Settings for Codespaces 
+import os
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.github.dev/',  # Allow GitHub Codespaces URLs
+    'https://localhost:8000',
+    "https://shiny-space-cod-699vxj7x44g7cr97g-3000.app.github.dev",
+    "https://shiny-space-cod-699vxj7x44g7cr97g-8000.app.github.dev",  # WebSocket server
+]
+
+CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins for development
+CORS_ALLOW_CREDENTIALS = True  # Don't use in production
 
 
 # Application definition
@@ -37,9 +50,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
+    'corsheaders', 
     'users',
     'schedules',
     'payments',
@@ -49,7 +63,9 @@ INSTALLED_APPS = [
     
 ]
 
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # Enable CORS
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -109,12 +125,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# DRF Authentication
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
