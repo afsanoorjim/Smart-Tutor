@@ -1,0 +1,28 @@
+# Django and core backend tools
+Django>=4.2,<5.0
+djangorestframework>=3.14.0
+djangorestframework-simplejwt>=5.3.0
+
+# CORS
+django-cors-headers>=3.14.0
+
+# WebSockets / Channels
+channels>=4.0.0
+channels-redis>=4.1.0
+
+# Environment variables
+python-decouple>=3.8
+
+# PostgreSQL (optional: remove if using SQLite)
+psycopg2-binary>=2.9.6
+
+# For backup to cloud (if you integrate Google Drive, etc.)
+google-api-python-client>=2.105.0
+google-auth>=2.22.0
+google-auth-oauthlib>=1.1.0
+
+# Utilities
+Pillow>=10.0.0
+
+# Optional: For auto timezones and localization
+pytz>=2024.1
