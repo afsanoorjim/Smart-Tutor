@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "../styles/Login.module.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
+  const [username, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(""); // Error state
@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     // Form validation
-    if (!email || !password) {
+    if (!username || !password) {
       setError("Email and Password are required");
       return;
     }
@@ -22,10 +22,10 @@ function Login() {
     setError(""); // Clear any previous errors
 
     try {
-      const response = await fetch("https://shiny-space-cod-699vxj7x44g7cr97g-8000.app.github.dev/api/user/login/", {
+      const response = await fetch("https://psychic-spork-wrrvqwjqg967f765-8000.app.github.dev/api/user/login/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       const data = await response.json();
@@ -54,9 +54,9 @@ function Login() {
         {error && <p className={styles.error}>{error}</p>} {/* Display error message */}
         <form onSubmit={handleSubmit}>
           <input
-            type="email"
-            placeholder="Email"
-            value={email}
+            type="username"
+            placeholder="username"
+            value={username}
             onChange={(e) => setEmail(e.target.value)}
             className={styles.input}
           />

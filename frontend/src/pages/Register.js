@@ -9,7 +9,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const response = await fetch("https://shiny-space-cod-699vxj7x44g7cr97g-8000.app.github.dev/api/user/register/", {
+        const response = await fetch("https://psychic-spork-wrrvqwjqg967f765-8000.app.github.dev/api/user/register/", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
