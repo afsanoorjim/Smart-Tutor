@@ -32,9 +32,10 @@ function Login() {
 
       if (response.ok) {
         // Store tokens in localStorage
+        console.log(data)
         localStorage.setItem("access_token", data.access);
         localStorage.setItem("refresh_token", data.refresh);
-        navigate("/"); // Redirect to homepage
+        navigate("/dashboard"); // Redirect to homepage
         console.log("Login successful:", data);
       } else {
         setError(data.error || "Login failed!"); // Show error message
